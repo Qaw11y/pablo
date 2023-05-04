@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proba</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div class="main">
+        <div class="mainblank">
+        
+            <form action="">
+                
+                <input type="text" name="tel" class="phone" placeholder="Номер телефона" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" required maxlength="12" id="tel">
+              </form>
+
+        <input name="pinc" class="pin" type="submit" value="Дать пинкод" id="button" onclick="few()">
+        <div id="div"></div>
+    
+        <input type="text" name="vvod" class="pole" placeholder="Ввести пинкод">
+    </div></div>
+
+
+    
+    
+
+
+</body>
+<script>
+    function Random (){ 
+        const max = 9999;
+        const min = 1000;
+        return Math.round(Math.random() * (max - min + 1) + min);
+       }
+       
+       const btn = document.getElementById('button');
+       const div = document.getElementById('div');
+       
+       btn.onclick = function() {
+         div.innerHTML = Random();
+       }
+
+
+       let inp = document.querySelector('#tel');
+
+// Проверяем фокус
+inp.addEventListener('focus', _ => {
+  // Если там ничего нет или есть, но левое
+  if(!/^\+\d*$/.test(inp.value))
+    // То вставляем знак плюса как значение
+    inp.value = '+';
+});
+
+inp.addEventListener('keypress', e => {
+  // Отменяем ввод не цифр
+  if(!/\d/.test(e.key))
+    e.preventDefault();
+});
+
+
+</script>
+
+</html>
